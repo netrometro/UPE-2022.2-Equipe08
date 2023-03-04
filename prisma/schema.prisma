@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model note {
+  id         Int       @id @default(autoincrement())
+  title      String?
+  body       String?
+  createdAt  DateTime  @default(now())
+  uptadedAt  DateTime
+  userId     Int
+  deletedBy  DateTime?
+  isDeleted  Boolean   @default(false)
+  isArchived Boolean   @default(false)
+  user       user      @relation(fields: [userId], references: [id], map: "Note_userId_fkey")
+  shared     shared[]
+  tag        tag[]     @relation("notetag")
+
+  @@index([userId], map: "Note_userId_fkey")
+}
+
+model shared {
+  id     Int  @id @default(autoincrement())
+  userId Int
+  noteId Int
+  note   note @relation(fields: [noteId], references: [id], map: "Shared_noteId_fkey")
+  user   user @relation(fields: [userId], references: [id], map: "Shared_userId_fkey")
+
+  @@index([noteId], map: "Shared_noteId_fkey")
+  @@index([userId], map: "Shared_userId_fkey")
+}
+
+model tag {
+  id   Int    @id @default(autoincrement())
+  name String
+  note note[] @relation("notetag")
+}
+
+model user {
+  id       Int      @id @default(autoincrement())
+  password String
+  username String   @unique(map: "User_username_key")
+  createdAt DateTime @default(now())
+  note     note[]
+  shared   shared[]
+}
