@@ -1,5 +1,6 @@
 import {PrismaClient} from "@prisma/client";
-// import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient();
 
@@ -13,24 +14,35 @@ export default{
             })
     
             if (user) {
-                console.log("ja tem")
                 return res.json({error: "usuário já existe"})
                 
             }
-            // const hashedPassword =  bcrypt.hashSync(password, 10)
+             const hashedPassword = await bcrypt.hash(password, 10)
         
     
             user = await prisma.user.create({
                 data: {
                     username,
-                    password,
+                    password: hashedPassword,
                 },
             })
         
-            return res.json(user)
+            
+            return res.json({message: "Usuário criado com suceeso!"})
+
             
         } catch (error) {
             return res.json(error)
+        }
+    },
+
+    async findUsers(req, res){
+        try {
+            const users =  await prisma.user.findMany();
+            res.json(users);
+            
+        } catch (error) {
+            res.json(error)
         }
     },
 
@@ -45,18 +57,67 @@ export default{
             })
             
             if (!user) {
-                return res.json("usuário não cadastrado")
+                return res.json("Usuário não cadastrado")
             }
 
             const checkPass = user.password == password
-            if (checkPass) {
-                return res.json("usuário logado")
+            if (!checkPass) {
+                return res.json("Senha inválida")
             }
+            
+            const token =  jwt.sign({userId: user.id}, process.env.JWT_SECRET, {expiresIn: "5m"})
+            return res.json({user:{user}, token})
 
-            return res.json("usuário não encontrado")
 
         } catch (error) {
             return res.json(error)
         }
+    },
+
+    async updateUser(req, res){
+        try{
+            const {id} = req.params;
+            const {username, password} = req.body;
+
+            let user = await prisma.user.findUnique({where: {id: parseInt(id)}})
+
+            if (!user) {
+                return res.status(401).json({error: "Não foi possível encontrar esse usuário"})
+            }
+
+            user = await prisma.user.update({
+                where: {
+                    id: parseInt(id),
+                },
+                data: {
+                    username, 
+                    password
+                } 
+            })
+
+            res.status(200).json({user})
+        }
+        catch(error){
+            res.status(400).json({error})
+
+        }
+
+    },
+
+    async deleteUser (req, res) {
+        try {
+            const {id} = req.params;
+            const user = await prisma.user.delete({
+                where: {
+                    id: parseInt(id),
+                },
+            })
+            res.json(user)
+        } catch(error){
+            return res.json(error)
+
+        }
     }
+
+
 }
