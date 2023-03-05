@@ -42,10 +42,10 @@ model tag {
 }
 
 model user {
-  id       Int      @id @default(autoincrement())
-  password String
-  username String   @unique(map: "User_username_key")
+  id        Int      @id @default(autoincrement())
+  password  String
+  username  String   @unique(map: "User_username_key")
   createdAt DateTime @default(now())
-  note     note[]
-  shared   shared[]
+  note      note[]
+  shared    shared[]
 }

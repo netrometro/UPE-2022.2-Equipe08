@@ -10,13 +10,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "nodemon": "^2.0.21",
     "sucrase": "^3.29.0"
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",
     "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "react-dom": "^18.2.0",
+    "react-rooter": "^0.1.2",
+    "react-router": "^6.8.2",
     "react-router-dom": "^6.8.2"
   }
 }
