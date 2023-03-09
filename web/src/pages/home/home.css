@@ -1,13 +1,28 @@
-button{
+h1{
+    color: #f8dcb4;
+}
+
+.home-button{
     height: 45px;
-    display: block;
-    background-color: #5568FE;
-    font-size: 20px;
-    font-weight: bold;
+    background-color: #9c7a9d;
+    font-size: 15px;
+    font-weight: bolder;
     border: none;
     outline: none;
     border-radius: 8px;
-    margin-top: 10px;
-    color:#CBD0F7;
-    cursor:alias;
+    color:#f8dcb4;
+    cursor:pointer;
+}
+
+
+a {
+    color: #f8dcb4
+}
+
+a:hover{
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #9c7a9d;
+    transition: 0.6s all;
 }
