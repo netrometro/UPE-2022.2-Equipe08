@@ -1,3 +1,18 @@
+section{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+aside{
+    display: flex;
+}
+.archive-icon{
+    color: #f8dcb4;
+    margin-top: 2px;
+    margin-right: 6px;
+}
+
 h1{
     color: #f8dcb4;
 }
@@ -14,6 +29,29 @@ h1{
     cursor:pointer;
 }
 
+.trash-icon{
+    color: #f8dcb4;
+    margin-top: 3px;
+    margin-right: 1px;
+}
+
+.trash-icon:hover{
+    border: 2px solid;
+    padding: 0.5px;
+    border-radius: 10px;
+    background-color: #9c7a9d;
+    transition: 0.6s all;
+
+}
+
+.archive-icon:hover{
+    border: 2px solid;
+    padding: 0.5px;
+    border-radius: 10px;
+    background-color: #9c7a9d;
+    transition: 0.6s all;
+
+}
 
 a {
     color: #f8dcb4
