@@ -1,0 +1,101 @@
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden; 
+    background-color: #2c2b4b;
+}
+
+.area-login{
+    background-color: #2c2b4b;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #181920;
+    width: 355px;
+    height: 320px;
+    padding: 35px;
+    border-radius: 15px;
+}
+
+h1{
+    color:white
+}
+
+.login form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.login input{
+    margin-top: 10px;
+    background-color: #9c7a9d;
+    color:white;
+    padding-left: 10px;
+    border: none;
+    height: 45px;
+    outline: none;
+    border-radius: 8px;
+}
+
+.login img{
+    width: 65px;
+    height: auto;
+}
+
+input::placeholder{
+    color: white;
+    font-size: 14px;
+}
+
+form [type='submit'] {
+    height: 45px;
+    display: block;
+    background-color: #159777;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    color:white;
+    cursor:pointer;
+}
+
+p{
+    color: #CBD0F7;
+}
+
+a{
+    color: #9c7a9d;
+    text-decoration: none;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+li{
+    display: inline-block;
+    margin: 20px;
+}
+
+header { 
+    display: inline-block;
+}
+header a {
+    color: #f8dcb4
+}
+
+header a:hover{
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #9c7a9d;
+    transition: 0.6s all;
+}

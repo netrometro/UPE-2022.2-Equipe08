@@ -1,0 +1,30 @@
+
+
+h1{
+    color: #f8dcb4;
+}
+
+.home-button{
+    height: 45px;
+    background-color: #9c7a9d;
+    font-size: 15px;
+    font-weight: bolder;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    color:#f8dcb4;
+    cursor:pointer;
+}
+
+
+a {
+    color: #f8dcb4
+}
+
+a:hover{
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #9c7a9d;
+    transition: 0.6s all;
+}
