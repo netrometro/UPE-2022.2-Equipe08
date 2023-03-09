@@ -5,24 +5,26 @@ import LoginForm from './pages/Login/login.jsx'
 import { Home } from './pages/home/home.jsx'
 import { AuthProvider } from './context/auth.jsx'
 import { PrivateRoute } from './routes/privateRoutes.jsx'
-
 export const App = () => {
   return (
     <AuthProvider>
 
       <Router> 
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
+        <header>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        </header>
         <Routes>
+
           <Route exact path="/" element={<First/>}>
           </Route>
           <Route path="/login" element={<LoginForm/>}>
