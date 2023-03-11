@@ -1,7 +1,8 @@
-section{
+header{
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
+    align-items: center;
 }
 
 aside{
@@ -27,6 +28,7 @@ h1{
     border-radius: 8px;
     color:#f8dcb4;
     cursor:pointer;
+    margin-left: 5px;
 }
 
 .trash-icon{
