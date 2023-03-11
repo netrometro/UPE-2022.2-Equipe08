@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,46 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model note {
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now())
+  uptadedAt  DateTime  @default(now())
+  userId     Int
+  deletedBy  DateTime?
+  isDeleted  Boolean   @default(false)
+  isArchived Boolean   @default(false)
+  text       String?
+  user       user      @relation(fields: [userId], references: [id], map: "Note_userId_fkey")
+  tag        tag[]     @relation("notetag")
 
-model User {
-  id      Int      @id @default(autoincrement())
-  username   String   @unique
-  password   String
-  notes Note[]
-  // sharedNotes Shared[]
+  @@index([userId], map: "Note_userId_fkey")
 }
 
-model Note {
-  id Int @id @default(autoincrement())
-  title String?
-  body String?
-  createdAt DateTime @default(now())
-  uptadedAt DateTime @updatedAt 
-  user User @relation(fields: [userId], references: [id])
-  userId Int
-  // sharedNotes Shared[]
-  tag Tag[] @relation("NoteTag")
-  deletedBy DateTime?
-
-  isDeleted Boolean @default(false)
-  isArchived Boolean @default(false)
-}
-
-
-model Tag {
-  id Int @id @default(autoincrement())
+model tag {
+  id   Int    @id @default(autoincrement())
   name String
-  notes Note[] @relation("NoteTag")
-
+  note note[] @relation("notetag")
 }
 
-// model Shared{
-//   id Int @id @default(autoincrement())
-//   user User @relation(fields: [userId], references: [id])
-//   userId Int
-//   note Note @relation(fields: [noteId], references: [id])
-//   noteId Int
-// }
-
-
-
+model user {
+  id       Int    @id @default(autoincrement())
+  password String
+  username String @unique(map: "User_username_key")
+  note     note[]
+}
