@@ -18,6 +18,7 @@ function RegisterForm (){
 
         const response = await api.post("/register", data);
         console.log(response.data);
+        alert ("Cadastrado com sucesso!")
     }
 
     return(
