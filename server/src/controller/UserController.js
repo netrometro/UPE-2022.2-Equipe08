@@ -65,7 +65,7 @@ export default{
                 return res.json("Senha inválida")
             }
             
-            const token =  jwt.sign({userId: user.id}, process.env.JWT_SECRET, {expiresIn: "5m"})
+            const token =  jwt.sign({userId: user.id}, process.env.JWT_SECRET, {expiresIn: "1h"})
             return res.json({user:{user}, token})
 
 

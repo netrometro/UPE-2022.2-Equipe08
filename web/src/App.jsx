@@ -1,27 +1,18 @@
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import First from './pages/first/first.jsx'
 import RegisterForm from './pages/cadastro/cadastro.jsx'
 import LoginForm from './pages/Login/login.jsx'
 import { Home } from './pages/home/home.jsx'
 import { AuthProvider } from './context/auth.jsx'
 import { PrivateRoute } from './routes/privateRoutes.jsx'
+import Navbar from './components/navbar.jsx'
+// import Archived from './pages/arquivados/archived.jsx'
 
 export const App = () => {
   return (
     <AuthProvider>
-
       <Router> 
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
+        <Navbar/>
         <Routes>
           <Route exact path="/" element={<First/>}>
           </Route>
@@ -31,8 +22,7 @@ export const App = () => {
           </Route>
           <Route path="/home" element={<PrivateRoute/>}>
             <Route path='/home' element={<Home/>}></Route>
-          </Route>
-         
+          </Route>        
         </Routes>
       </Router>
     </AuthProvider>

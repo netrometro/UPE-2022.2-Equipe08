@@ -25,9 +25,7 @@ export const AuthProvider = ({children}) => {
 
 
     const signIn = async ({username, password}) => {
-        console.log(username)
-        console.log(password)
-        
+       
         const response = await api.post("/login", {
             username,
             password,
@@ -42,6 +40,7 @@ export const AuthProvider = ({children}) => {
             ] = `Bearer ${response.data.token}`;
             localStorage.setItem("@Auth:token", response.data.token);
             localStorage.setItem("@Auth:user", JSON.stringify(response.data.user));
+
         }
 
 

@@ -1,4 +1,4 @@
-import logo from '../assets/icon.svg'
+import logo from '../assets/pinned-notes.png'
 import './login.css'
 import {Link} from "react-router-dom"
 import { useContext, useState } from 'react'

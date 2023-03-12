@@ -1,5 +1,5 @@
 import '../Login/login.css'
-import logo from '../assets/icon.svg'
+import logo from '../assets/pinned-notes.png'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { api } from '../../services/api.jsx';
@@ -18,6 +18,7 @@ function RegisterForm (){
 
         const response = await api.post("/register", data);
         console.log(response.data);
+        alert ("Cadastrado com sucesso!")
     }
 
     return(

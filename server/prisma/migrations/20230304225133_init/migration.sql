@@ -4,7 +4,7 @@ CREATE TABLE `note` (
     `title` VARCHAR(191) NULL,
     `body` VARCHAR(191) NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `uptadedAt` DATETIME(3) NOT NULL,
+    `uptadedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `userId` INTEGER NOT NULL,
     `deletedBy` DATETIME(3) NULL,
     `isDeleted` BOOLEAN NOT NULL DEFAULT false,
