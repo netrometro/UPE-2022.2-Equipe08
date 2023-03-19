@@ -1,11 +1,12 @@
 import { AuthContext } from "../../context/auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import './home.css'
+
 import { AiOutlineInbox} from "react-icons/ai";
 import { RiDeleteBin4Line } from "react-icons/ri"
 
 import NotesList from "../../components/notesList";
-import { useState } from "react";
+import SearchBar from "../../components/SearchBar";
 import { api } from "../../services/api";
 
 export const Home = () =>{
@@ -22,6 +23,8 @@ export const Home = () =>{
             setNotes(savedNotes);
         }                
     }
+
+    const [searchText, setSearchText] = useState("");
 
     const addNote = async (text) => {
         const data ={
@@ -57,7 +60,8 @@ export const Home = () =>{
                 </aside>
             </header>
             <div>
-               <NotesList notes={notes} handleAddNote={addNote}/>
+                <SearchBar handleSearch={setSearchText}/> 
+               <NotesList notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote={addNote}/>
             </div> 
 
 
