@@ -60,10 +60,9 @@ export const Home = () =>{
                 </aside>
             </header>
             <div>
-                <SearchBar handleSearch={setSearchText}/> 
+               <SearchBar handleSearch={setSearchText}/> 
                <NotesList notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote={addNote}/>
             </div> 
-
 
         </section>
     );
