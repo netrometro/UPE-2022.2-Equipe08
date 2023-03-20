@@ -51,5 +51,58 @@ export default {
             return res.json(error)
         }
 
-    }
+    },
+
+    async archiveNote(req, res) {
+        const { id } = req.params;
+        const { userId } = req;
+      
+        try {
+          const note = await prisma.note.findUnique({
+            where: { id: parseInt(id) },
+            select: { userId: true, isArchived: true },
+          });
+      
+          if (!note || note.userId !== userId) {
+            return res.status(404).json({ message: "Nota não encontrada" });
+          }
+      
+          const updatedNote = await prisma.note.update({
+            where: { id: parseInt(id) },
+            data: { isArchived: true },
+          });
+      
+          res.json(updatedNote);
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ message: "Erro ao arquivar nota" });
+        }
+      },
+      
+      async unarchiveNote(req, res) {
+        const { id } = req.params;
+        const { userId } = req;
+      
+        try {
+          const note = await prisma.note.findUnique({
+            where: { id: parseInt(id) },
+            select: { userId: true, isArchived: false },
+          });
+      
+          if (!note || note.userId !== userId) {
+            return res.status(404).json({ message: "Nota não encontrada" });
+          }
+      
+          const updatedNote = await prisma.note.update({
+            where: { id: parseInt(id) },
+            data: { isArchived: false },
+          });
+      
+          res.json(updatedNote);
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ message: "Erro ao arquivar nota" });
+        }
+      }
 }
+

@@ -34,3 +34,4 @@ model user {
   username String @unique(map: "User_username_key")
   note     note[]
 }
+

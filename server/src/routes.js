@@ -18,7 +18,11 @@ router.delete("/delete/:id", UserController.deleteUser)
 router.post("/notes/user/:id", notesController.createNote);
 router.get("/notes/user/:id", notesController.getNotes) 
 router.delete("/notes/delete/:id", notesController.deleteNotes)
+router.put("/notes/archive/:id", AuthMiddleware, notesController.archiveNote);
+router.put("/notes/unarchive/:id", AuthMiddleware, notesController.unarchiveNote);
+
 
 
 
 export {router};
+
