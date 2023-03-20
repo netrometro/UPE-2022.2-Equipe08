@@ -6,6 +6,7 @@ import { Home } from './pages/home/home.jsx'
 import { AuthProvider } from './context/auth.jsx'
 import { PrivateRoute } from './routes/privateRoutes.jsx'
 import Navbar from './components/navbar.jsx'
+import { Archives } from './pages/archives/archives.jsx'
 // import Archived from './pages/arquivados/archived.jsx'
 
 export const App = () => {
@@ -22,7 +23,10 @@ export const App = () => {
           </Route>
           <Route path="/home" element={<PrivateRoute/>}>
             <Route path='/home' element={<Home/>}></Route>
-          </Route>        
+          </Route>
+          <Route path="/archive" element={<PrivateRoute/>}>
+            <Route path='/archive' element={<Archives/>}></Route>
+          </Route>         
         </Routes>
       </Router>
     </AuthProvider>
