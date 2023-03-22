@@ -1,0 +1,17 @@
+{
+  "name": "Equipe08",
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "src/server.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/server.js"
+    }
+  ]
+}
