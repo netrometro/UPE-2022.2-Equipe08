@@ -2,6 +2,15 @@
   "name": "app-notas",
   "version": "0.1.0",
   "private": true,
+  "module": "",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prisma": "^4.11.0"
+  },
   "dependencies": {
     "@prisma/client": "^4.11.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -44,13 +53,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "prisma": "^4.11.0"
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "src/index.jsx",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
