@@ -8,7 +8,7 @@ import { PrivateRoute } from './routes/privateRoutes.jsx'
 import Navbar from './components/navbar.jsx'
 import { Archives } from './pages/archives/archives.jsx'
 // import Archived from './pages/arquivados/archived.jsx'
-
+//teste
 export const App = () => {
   return (
     <AuthProvider>
