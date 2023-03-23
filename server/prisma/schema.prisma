@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -19,7 +19,7 @@ model note {
   user       user      @relation(fields: [userId], references: [id], map: "Note_userId_fkey")
   tag        tag[]     @relation("notetag")
 
-  @@index([userId], map: "Note_userId_fkey")
+  @@index([userId])
 }
 
 model tag {
@@ -34,4 +34,3 @@ model user {
   username String @unique(map: "User_username_key")
   note     note[]
 }
-
