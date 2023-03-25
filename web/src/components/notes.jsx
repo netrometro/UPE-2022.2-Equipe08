@@ -30,12 +30,22 @@ function Notes({id, text, archived, setNotes}){
             console.error(error);
         }
     }
+    const handleDeleteForever = async() => {
+        try {
+            const response = await api.delete(`/notes/delete/${id}`);
+            if (response.status === 200){
+                alert ("Nota deletada com sucesso")
+            }
+        } catch(error){
+            console.log(error)
+        }
+    }
 
     return(
         <div className={`note ${isArchived ? "archived" : ""}`}>
             <span>{text}</span>
             <footer className="note-footer">
-                <RiDeleteBin4Line className="trash-note"></RiDeleteBin4Line>
+                <RiDeleteBin4Line className="trash-note" onClick={handleDeleteForever}></RiDeleteBin4Line>
                 {!isArchived && <BiArchiveIn className="archive-note" onClick={handleArchiveNote}></BiArchiveIn>}
                 {!isArchived && <BiArchiveOut className="unarchive-note" onClick={handleUnarchiveNote}></BiArchiveOut>}
             </footer>
