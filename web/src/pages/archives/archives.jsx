@@ -1,17 +1,17 @@
 import { AuthContext } from "../../context/auth";
-import { useContext, useState } from "react";
-import './home.css'
-
-import { AiOutlineInbox} from "react-icons/ai";
+import { useContext } from "react";
+import './archives.css'
+import { BiHomeAlt2} from "react-icons/bi";
 import { RiDeleteBin4Line } from "react-icons/ri"
 
-import NotesList from "../../components/notesList";
-import SearchBar from "../../components/SearchBar";
+
+import { useState } from "react";
 import { api } from "../../services/api";
 
 import {Link} from "react-router-dom"
+import NotesArchList from "../../components/notesArchList";
 
-export const Home = () =>{
+export const Archives = () =>{
 
     const session = JSON.parse(localStorage.getItem("@Auth:user"))
     
@@ -25,8 +25,6 @@ export const Home = () =>{
             setNotes(savedNotes);
         }                
     }
-
-    const [searchText, setSearchText] = useState("");
 
     const addNote = async (text) => {
         const data ={
@@ -53,24 +51,22 @@ export const Home = () =>{
     return (
         <section className="home">
             <header>
-                <h1>Welcome to Notes-App</h1>
+                <h1>Archived Notes</h1>
                 <aside>
                     <RiDeleteBin4Line className="trash-icon" size="2.3em" ></RiDeleteBin4Line>
-                    <Link to="/archive">
-                        <AiOutlineInbox className="archive-icon" size="2.5em"></AiOutlineInbox>
+                    <Link to="/home">
+                        <BiHomeAlt2 className="home-icon" size="2.5em"></BiHomeAlt2>
                     </Link>
-                    <button className="home-button" onClick={retrieve}>Show notes</button>
-
-                    <button className="home-button"onClick={handleSignOut}>Sign out</button>
                     
+                    <button className="home-button" onClick={retrieve}>Show notes</button>
+                    <button className="home-button"onClick={handleSignOut}>Sign out</button>
                 </aside>
             </header>
             <div>
-               <SearchBar handleSearch={setSearchText}/> 
-               <NotesList notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote={addNote}/>
+               <NotesArchList notes={notes} handleAddNote={addNote}/>
             </div> 
+
 
         </section>
     );
 }
-
