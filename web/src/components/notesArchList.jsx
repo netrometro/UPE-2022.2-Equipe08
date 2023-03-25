@@ -1,6 +1,6 @@
 import Notes from "./notes";
 import "./note.css"
-import AddNote from "./AddNote";
+
 
 
 function NotesArchList({notes, handleAddNote}){
