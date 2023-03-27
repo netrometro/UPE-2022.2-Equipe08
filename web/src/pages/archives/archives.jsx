@@ -1,8 +1,8 @@
 import { AuthContext } from "../../context/auth";
 import { useContext } from "react";
-import './archives.css'
+import '../home/home.css';
 import { BiHomeAlt2} from "react-icons/bi";
-import { RiDeleteBin4Line } from "react-icons/ri"
+import { TbTrash } from "react-icons/tb"
 
 
 import { useState } from "react";
@@ -10,8 +10,11 @@ import { api } from "../../services/api";
 
 import {Link} from "react-router-dom"
 import NotesArchList from "../../components/notesArchList";
+import SearchBar from "../../components/SearchBar";
 
 export const Archives = () =>{
+
+    const [searchText, setSearchText] = useState("");
 
     const session = JSON.parse(localStorage.getItem("@Auth:user"))
     
@@ -24,22 +27,7 @@ export const Archives = () =>{
             const savedNotes = [...saved.data]
             setNotes(savedNotes);
         }                
-    }
-
-    const addNote = async (text) => {
-        const data ={
-            text: text,
-            userId: session.id
-        }
-
-         await api.post(`/notes/user/${session.id}`, data);
-
-         const notas = await api.get(`/notes/user/${session.id}`)
-
-        const newNotes = [...notas.data]
-        setNotes(newNotes)
-    }
-    
+    } 
 
     const {signOut} = useContext(AuthContext)
 
@@ -53,7 +41,9 @@ export const Archives = () =>{
             <header>
                 <h1>Archived Notes</h1>
                 <aside>
-                    <RiDeleteBin4Line className="trash-icon" size="2.3em" ></RiDeleteBin4Line>
+                    <Link to="/trash">
+                        <TbTrash className="trash-icon" size="2.3em" ></TbTrash>
+                    </Link>
                     <Link to="/home">
                         <BiHomeAlt2 className="home-icon" size="2.5em"></BiHomeAlt2>
                     </Link>
@@ -63,7 +53,8 @@ export const Archives = () =>{
                 </aside>
             </header>
             <div>
-               <NotesArchList notes={notes} handleAddNote={addNote}/>
+                <SearchBar handleSearch={setSearchText}/> 
+                <NotesArchList notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))}/>
             </div> 
 
 
