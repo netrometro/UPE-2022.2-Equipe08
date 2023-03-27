@@ -6,10 +6,10 @@ header{
 }
 
 
-
 aside{
     display: flex;
 }
+
 .archive-icon{
     color: #f8dcb4;
     margin-top: 2px;

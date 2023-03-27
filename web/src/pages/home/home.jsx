@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import './home.css'
 
 import { AiOutlineInbox} from "react-icons/ai";
-import { RiDeleteBin4Line } from "react-icons/ri"
+import { TbTrash } from "react-icons/tb"
 
 import NotesList from "../../components/notesList";
 import SearchBar from "../../components/SearchBar";
@@ -55,7 +55,9 @@ export const Home = () =>{
             <header>
                 <h1>Welcome to Notes-App</h1>
                 <aside>
-                    <RiDeleteBin4Line className="trash-icon" size="2.3em" ></RiDeleteBin4Line>
+                    <Link to="/trash">
+                        <TbTrash className="trash-icon" size="2.3em" ></TbTrash>
+                    </Link>
                     <Link to="/archive">
                         <AiOutlineInbox className="archive-icon" size="2.5em"></AiOutlineInbox>
                     </Link>
@@ -73,4 +75,3 @@ export const Home = () =>{
         </section>
     );
 }
-
