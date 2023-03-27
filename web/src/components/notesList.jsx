@@ -4,16 +4,17 @@ import AddNote from "./AddNote";
 
 
 function NotesList({notes, handleAddNote}){
-    const unarchivedNotes = notes.filter(note => !note.isArchived);
+    const unarchivedAndUndeletedNotes = notes.filter(note => !note.isArchived && !note.isDeleted);
 
-        return (
-            <div className="notes-list">
-                {unarchivedNotes.map((note)=>(
-                    <Notes id={note.id} text={note.text} isArchived={note.isArchived}/>
-                ))}
-                <AddNote handleAddNote={handleAddNote}/>
-            </div>
-        )
-    }
+    return (
+        <div className="notes-list">
+            {unarchivedAndUndeletedNotes.map((note)=>(
+                <Notes id={note.id} text={note.text} isArchived={note.isArchived}/>
+            ))}
+            <AddNote handleAddNote={handleAddNote}/>
+        </div>
+    )
+}
 
 export default NotesList;
+

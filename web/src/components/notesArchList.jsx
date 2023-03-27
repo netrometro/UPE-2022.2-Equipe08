@@ -1,15 +1,14 @@
-import Notes from "./notes";
+import ArchivedNotes from "./archivedNotes";
 import "./note.css"
-//import AddNote from "./AddNote";
 
 
-function NotesArchList({ notes, handleAddNote }) {
-    const archivedNotes = notes.filter(note => note.isArchived);
+function NotesArchList({ notes}) {
+    const archNotes = notes.filter(note => note.isArchived && !note.isDeleted);
 
     return (
         <div className="notes-list">
-            {archivedNotes.map((note) => (
-                <Notes id={note.id} text={note.text} isArchived={note.isArchived} />
+            {archNotes.map((note) => (
+                <ArchivedNotes id={note.id} text={note.text} isArchived={note.isArchived} />
             ))}
 
         </div>
