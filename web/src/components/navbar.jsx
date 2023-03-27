@@ -5,13 +5,13 @@ function Navbar(){
         <header>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" className="teste">Home</Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to="/register" className="teste">Register</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login" className="teste">Login</Link>
             </li>
           </ul>
         </header>

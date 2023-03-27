@@ -85,17 +85,18 @@ li{
     margin: 20px;
 }
 
-header { 
-    display: inline-block;
-}
-header a {
+/* header { 
+    display: inline-block; 
+}*/
+li a {
     color: #f8dcb4
 }
 
- header a:hover{
+ li a:hover{
     border: 2px solid;
     padding: 10px;
     border-radius: 15px;
     background-color: #9c7a9d;
     transition: 0.6s all;
 } 
+ 
