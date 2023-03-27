@@ -7,8 +7,9 @@ import { AuthProvider } from './context/auth.jsx'
 import { PrivateRoute } from './routes/privateRoutes.jsx'
 import Navbar from './components/navbar.jsx'
 import { Archives } from './pages/archives/archives.jsx'
-// import Archived from './pages/arquivados/archived.jsx'
-//teste
+import { Trash } from './pages/trash/trash.jsx'
+
+
 export const App = () => {
   return (
     <AuthProvider>
@@ -26,7 +27,10 @@ export const App = () => {
           </Route>
           <Route path="/archive" element={<PrivateRoute/>}>
             <Route path='/archive' element={<Archives/>}></Route>
-          </Route>         
+          </Route>
+          <Route path="/trash" element={<PrivateRoute/>}>
+            <Route path='/trash' element={<Trash/>}></Route>
+          </Route>          
         </Routes>
       </Router>
     </AuthProvider>
