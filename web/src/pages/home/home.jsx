@@ -5,6 +5,7 @@ import './home.css'
 import { AiOutlineInbox} from "react-icons/ai";
 import { TbTrash } from "react-icons/tb"
 
+import NotesFixedList from "../../components/notesFixedList"
 import NotesList from "../../components/notesList";
 import SearchBar from "../../components/SearchBar";
 import { api } from "../../services/api";
@@ -68,7 +69,11 @@ export const Home = () =>{
                 </aside>
             </header>
             <div>
-               <SearchBar handleSearch={setSearchText}/> 
+               <SearchBar handleSearch={setSearchText}/>
+               <h2 className="h2">Fixadas</h2>
+               <NotesFixedList notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote={addNote}/>
+               <br></br>
+               <h2 className="h2">Notas</h2>
                <NotesList notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote={addNote}/>
             </div> 
 
