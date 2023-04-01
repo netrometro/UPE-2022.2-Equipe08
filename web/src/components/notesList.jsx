@@ -4,7 +4,7 @@ import AddNote from "./AddNote";
 
 
 function NotesList({notes, handleAddNote}){
-    const unarchivedAndUndeletedNotes = notes.filter(note => !note.isArchived && !note.isDeleted);
+    const unarchivedAndUndeletedNotes = notes.filter(note => !note.isArchived && !note.isDeleted && !note.isFixed);
 
     return (
         <div className="notes-list">
