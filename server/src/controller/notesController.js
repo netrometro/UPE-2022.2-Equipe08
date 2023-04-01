@@ -155,6 +155,57 @@ export default {
           console.error(error);
           res.status(500).json({ message: "Erro ao recuperar nota" });
         }
-      }
-}
+      },
 
+async fixedNotes(req, res) {
+  const { id } = req.params;
+  const { userId } = req;
+
+  try {
+    const note = await prisma.note.findUnique({
+      where: { id: parseInt(id) },
+      select: { userId: true, isFixed: true },
+    });
+
+    if (!note || note.userId !== userId) {
+      return res.status(404).json({ message: "Nota não encontrada" });
+    }
+
+    const updatedNote = await prisma.note.update({
+      where: { id: parseInt(id) },
+      data: { isFixed: true },
+    });
+
+    res.json(updatedNote);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erro ao deletar nota" });
+  }
+},
+
+async notFixedNotes(req, res) {
+  const { id } = req.params;
+  const { userId } = req;
+
+  try {
+    const note = await prisma.note.findUnique({
+      where: { id: parseInt(id) },
+      select: { userId: true, isFixed: false },
+    });
+
+    if (!note || note.userId !== userId) {
+      return res.status(404).json({ message: "Nota não encontrada" });
+    }
+
+    const updatedNote = await prisma.note.update({
+      where: { id: parseInt(id) },
+      data: { isFixed: false },
+    });
+
+    res.json(updatedNote);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erro ao recuperar nota" });
+  }
+}
+}
