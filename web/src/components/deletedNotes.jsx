@@ -33,8 +33,8 @@ function TrashNotes({id, text, archived: deleted, setNotes}){
         <div className={`note ${isDeleted ? "deleted" : ""}`}>
             <span>{text}</span>
             <footer className="note-footer">
-                <TbTrashOff className="home-note" onClick={handleRecover}></TbTrashOff>
-                <TbTrash className="trash-note" onClick={handleDeleteForever}></TbTrash>
+                <TbTrashOff className="recover-note" onClick={handleRecover}></TbTrashOff>
+                <TbTrash className="trash-deleted-note" onClick={handleDeleteForever}></TbTrash>
             </footer>
         </div>
     )

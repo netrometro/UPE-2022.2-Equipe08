@@ -20,6 +20,10 @@ h1{
     color: #f8dcb4;
 }
 
+.h2{
+    color: #f8dcb4;
+}
+
 .home-button{
     height: 45px;
     background-color: #9c7a9d;
@@ -58,6 +62,20 @@ h1{
 
 }
 
+.home-icon{
+    color: #f8dcb4;
+    margin-top: 3px;
+    margin-right: 1px;
+}
+
+.home-icon:hover{
+    border: 2px solid;
+    padding: 0.5px;
+    border-radius: 10px;
+    background-color: #9c7a9d;
+    transition: 0.6s all;
+}
+
 /* a {
     color: #f8dcb4
 }
@@ -87,4 +105,5 @@ a:hover{
 .search-bar input:focus{
     outline: none;
 }
+
 
