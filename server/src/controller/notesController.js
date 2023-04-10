@@ -207,5 +207,34 @@ async notFixedNotes(req, res) {
     console.error(error);
     res.status(500).json({ message: "Erro ao recuperar nota" });
   }
+},
+
+async updateNote(req, res) {
+  const { id } = req.params;
+  const { userId } = req;
+  const { text, isFixed, isArchived } = req.body;
+
+  try {
+    const note = await prisma.note.findUnique({
+      where: { id: parseInt(id) },
+      select: { userId: true, isFixed: true, isArchived: true },
+    });
+
+    if (!note || note.userId !== userId) {
+      return res.status(404).json({ message: "Nota não encontrada" });
+    }
+
+    const updatedNote = await prisma.note.update({
+      where: { id: parseInt(id) },
+      data: { text, isFixed, isArchived },
+    });
+
+    res.json(updatedNote);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erro ao atualizar nota" });
+  }
 }
+
+
 }

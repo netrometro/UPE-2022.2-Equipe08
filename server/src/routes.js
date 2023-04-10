@@ -24,7 +24,7 @@ router.put("/notes/trash/:id", AuthMiddleware, notesController.trashNotes);
 router.put("/notes/recover/:id", AuthMiddleware, notesController.recoverNote);
 router.put("/notes/fixed/:id", AuthMiddleware, notesController.fixedNotes);
 router.put("/notes/notfixed/:id", AuthMiddleware, notesController.notFixedNotes);
-
+router.put("/notes/update/:id", AuthMiddleware, notesController.updateNote);
 
 
 export {router};
