@@ -34,7 +34,6 @@ function Notes({ id, text, archived, setNotes }) {
     try {
       const response = await api.put(`/notes/fixed/${id}`);
       if (response.status === 200) {
-        alert("Nota fixada com sucesso");
       }
     } catch (error) {
       console.log(error);
