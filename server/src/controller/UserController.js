@@ -45,6 +45,20 @@ export default{
             res.json(error)
         }
     },
+    
+    async findUser(req, res){
+        try{
+            const {username, password} = req.body;
+
+            const user = await prisma.user.findUnique({
+                where: username
+            })
+
+            res.json(user);
+        } catch (error){
+            res.json(error);
+        }
+    },
 
     async Login(req, res){
         try {
