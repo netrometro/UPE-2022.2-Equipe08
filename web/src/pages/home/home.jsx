@@ -1,5 +1,5 @@
 import { AuthContext } from "../../context/auth";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import './home.css'
 
 import { AiOutlineInbox} from "react-icons/ai";

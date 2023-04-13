@@ -1,5 +1,5 @@
 import { AuthContext } from "../../context/auth";
-import { useContext } from "react";
+import { useContext, useEffect} from "react";
 import '../home/home.css';
 import { BiHomeAlt2} from "react-icons/bi";
 import { TbTrash } from "react-icons/tb"
