@@ -22,7 +22,6 @@ function TrashNotes({id, text, archived: deleted, setNotes}){
         try {
             const response = await api.put(`/notes/recover/${id}`);
             if (response.status === 200){
-                alert ("Nota recuperada")
             }
         } catch(error){
             console.log(error)
