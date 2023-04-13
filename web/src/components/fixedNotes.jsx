@@ -52,7 +52,6 @@ function FixedNotes({id, text, archived, setNotes}){
             text: noteText,
           });
           if (response.status === 200) {
-            alert("Nota atualizada com sucesso");
             setIsEditing(false);
           }
         } catch (error) {
