@@ -14,7 +14,6 @@ function FixedNotes({id, text, archived, setNotes}){
         try {
             const response = await api.put(`/notes/archive/${id}`);
             if (response.status === 200) {
-                alert ("Nota arquivada com sucesso");
             }
         } catch (error) {
             console.error(error);
