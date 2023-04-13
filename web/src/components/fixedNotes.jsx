@@ -34,7 +34,6 @@ function FixedNotes({id, text, archived, setNotes}){
         try {
             const response = await api.put(`/notes/notfixed/${id}`);
             if (response.status === 200){
-                alert ("Nota desfixada com sucesso")
             }
         } catch(error){
             console.log(error)
