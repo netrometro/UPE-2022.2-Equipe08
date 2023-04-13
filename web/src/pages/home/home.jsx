@@ -26,6 +26,9 @@ export const Home = () =>{
             setNotes(savedNotes);
         }                
     }
+     useEffect(()=>{
+        retrieve();
+    })
 
     const [searchText, setSearchText] = useState("");
 
@@ -62,7 +65,6 @@ export const Home = () =>{
                     <Link to="/archive">
                         <AiOutlineInbox className="archive-icon" size="2.5em"></AiOutlineInbox>
                     </Link>
-                    <button className="home-button" onClick={retrieve}>Show notes</button>
 
                     <button className="home-button"onClick={handleSignOut}>Sign out</button>
                     
