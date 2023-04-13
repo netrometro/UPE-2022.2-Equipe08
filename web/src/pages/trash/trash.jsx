@@ -29,6 +29,10 @@ export const Trash = () =>{
         }                
     }
 
+     useEffect(()=>{
+        retrieve();
+    })
+    
     const {signOut} = useContext(AuthContext)
 
     const handleSignOut = async e =>{
@@ -47,8 +51,7 @@ export const Trash = () =>{
                     <Link to="/home">
                         <BiHomeAlt2 className="home-icon" size="2.5em"></BiHomeAlt2>
                     </Link>
-                    
-                    <button className="home-button" onClick={retrieve}>Show notes</button>
+
                     <button className="home-button"onClick={handleSignOut}>Sign out</button>
                 </aside>
             </header>
