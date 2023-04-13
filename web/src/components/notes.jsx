@@ -14,7 +14,6 @@ function Notes({ id, text, archived, setNotes }) {
     try {
       const response = await api.put(`/notes/archive/${id}`);
       if (response.status === 200) {
-        alert("Nota arquivada com sucesso");
       }
     } catch (error) {
       console.error(error);
@@ -25,7 +24,6 @@ function Notes({ id, text, archived, setNotes }) {
     try {
       const response = await api.put(`/notes/trash/${id}`);
       if (response.status === 200) {
-        alert("Nota movida para a lixeira");
       }
     } catch (error) {
       console.log(error);

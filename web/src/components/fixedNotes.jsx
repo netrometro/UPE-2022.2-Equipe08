@@ -25,7 +25,6 @@ function FixedNotes({id, text, archived, setNotes}){
         try {
             const response = await api.put(`/notes/trash/${id}`);
             if (response.status === 200){
-                alert ("Nota movida para a lixeira")
             }
         } catch(error){
             console.log(error)
