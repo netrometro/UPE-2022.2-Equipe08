@@ -16,9 +16,14 @@ function RegisterForm (){
             password,
         };
 
-        const response = await api.post("/register", data);
-        console.log(response.data);
-        alert ("Cadastrado com sucesso!")
+        const user = await api.get('/user', data)
+        if(!user){
+            const response = await api.post("/register", data);
+            console.log(response.data);
+            alert ("Cadastrado com sucesso!")
+        } else{
+            alert("Usuário já existe")
+        }
     }
 
     return(
