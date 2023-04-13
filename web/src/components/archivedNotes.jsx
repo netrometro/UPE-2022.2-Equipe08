@@ -14,7 +14,6 @@ function ArchivedNotes({id, text, archived, setNotes}){
         try {
             const response = await api.put(`/notes/unarchive/${id}`);
             if (response.status === 200) {
-                alert ("Nota desarquivada com sucesso");
             }
         } catch (error) {
             console.error(error);
