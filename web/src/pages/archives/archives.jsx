@@ -28,6 +28,10 @@ export const Archives = () =>{
             setNotes(savedNotes);
         }                
     } 
+    
+     useEffect(()=>{
+        retrieve();
+    })
 
     const {signOut} = useContext(AuthContext)
 
@@ -48,7 +52,6 @@ export const Archives = () =>{
                         <BiHomeAlt2 className="home-icon" size="2.5em"></BiHomeAlt2>
                     </Link>
                     
-                    <button className="home-button" onClick={retrieve}>Show notes</button>
                     <button className="home-button"onClick={handleSignOut}>Sign out</button>
                 </aside>
             </header>
